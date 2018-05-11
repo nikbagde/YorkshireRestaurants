@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SheffieldRestaurants</string>
+    <string name="sheffield_restaurants">Sheffield Restaurants</string>
+    <string name="take_a_chance_explore_sheffield">Take a chance. Explore Sheffield.</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">Log In</string>
+</resources>

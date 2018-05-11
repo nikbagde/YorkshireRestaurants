@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "843776764274",
+    "firebase_url": "https://sheffieldrestaurants-336f8.firebaseio.com",
+    "project_id": "sheffieldrestaurants-336f8",
+    "storage_bucket": "sheffieldrestaurants-336f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843776764274:android:d30fc2b9c56f9ee9",
+        "android_client_info": {
+          "package_name": "android.example.com.sheffieldrestaurants"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843776764274-smr8j8q2n6d4o2vg669pr7pq0qcelgot.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "android.example.com.sheffieldrestaurants",
+            "certificate_hash": "a0142b0cbe550e4f8d453da1573b042e1389f684"
+          }
+        },
+        {
+          "client_id": "843776764274-7s4i6vblt5i4muevaeb4ha11sjrne137.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5h5uo1yGow25kbZvtuf9IaPXm_oI-WUc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843776764274-7s4i6vblt5i4muevaeb4ha11sjrne137.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
