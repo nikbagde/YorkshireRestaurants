@@ -8,7 +8,7 @@
     tools:context=".CuisineActivity">
 
 
-    <!-- RECYCLER VIEW HERE FOR RESTAURATNS CUISINES -->
+    <!-- RECYCLER VIEW HERE FOR RESTS CUISINES -->
 
     <com.google.android.gms.ads.AdView
         android:layout_gravity="bottom"

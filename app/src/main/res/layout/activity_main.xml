@@ -97,8 +97,10 @@
     </FrameLayout>
 
     <ImageView
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_copyright_white_24dp"/>
+        android:background="@drawable/ic_copyright_white_24dp"
+        android:contentDescription="@string/copyright_symbol" />
 
 </LinearLayout>

@@ -6,9 +6,8 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.transition.Explode;
+import android.transition.Fade;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 
 import butterknife.BindView;
@@ -30,15 +29,18 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-                setEnterExitTransition(new Intent(MainActivity.this,CuisineActivity.class));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    setEnterExitTransition(new Intent(MainActivity.this,CuisineActivity.class));
+                }
+                startActivity(new Intent(MainActivity.this, CuisineActivity.class));
             }
         });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void setEnterExitTransition(Intent intent){
-        getWindow().setExitTransition(new Explode().setDuration(800));
-        getWindow().setReenterTransition(new Explode().setDuration(800));
+        getWindow().setExitTransition(new Fade().setDuration(1000));
+        getWindow().setReenterTransition(new Fade().setDuration(1000));
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
     }
 }
