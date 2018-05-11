@@ -1,4 +1,4 @@
-package android.example.com.sheffieldrestaurants;
+package abbie.example.com.sheffieldrestaurants;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

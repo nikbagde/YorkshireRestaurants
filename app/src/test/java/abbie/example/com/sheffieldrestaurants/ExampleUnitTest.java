@@ -1,4 +1,4 @@
-package android.example.com.sheffieldrestaurants;
+package abbie.example.com.sheffieldrestaurants;
 
 import org.junit.Test;
 
