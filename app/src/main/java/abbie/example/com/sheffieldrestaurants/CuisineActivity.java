@@ -10,6 +10,8 @@ import android.transition.Fade;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -20,12 +22,23 @@ import butterknife.ButterKnife;
 public class CuisineActivity extends AppCompatActivity {
 
     @BindView(R.id.adView) AdView mAdView;
+    @BindView(R.id.button1) Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cuisine);
         ButterKnife.bind(this);
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CuisineActivity.this, RestaurantActivity.class));
+            }
+        });
+
+
 
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
