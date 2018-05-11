@@ -1,4 +1,4 @@
-package abbie.example.com.sheffieldrestaurants;
+package abbie.example.com.yorkshirerestaurants;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

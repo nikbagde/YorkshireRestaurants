@@ -1,4 +1,4 @@
-package abbie.example.com.sheffieldrestaurants.Data;
+package abbie.example.com.yorkshirerestaurants.Data;
 
 public class Restaurant {
 

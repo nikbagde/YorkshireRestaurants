@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="abbie.example.com.sheffieldrestaurants.RestaurantActivity">
+    tools:context="abbie.example.com.yorkshirerestaurants.RestaurantActivity">
 
     <View
         android:elevation="4dp"
@@ -48,10 +48,7 @@
             android:src="@drawable/ic_language_white_24dp" />
 
     </LinearLayout>
-
-
-
-
+    
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -76,6 +73,7 @@
                     android:src="@drawable/ic_home_black_24dp" />
 
                 <TextView
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12 ShireCross Rd, S29 6EH"
@@ -96,9 +94,10 @@
                     android:src="@drawable/ic_phone_iphone_black_24dp" />
 
                 <TextView
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0114 2480266"
+                    android:text="01342682862"
                     android:autoLink="phone"
                     android:textSize="18sp" />
 
@@ -114,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
-                android:text="Avg Cost [For 2] : "
+                android:text="Average Cost [2] : "
                 android:textSize="16sp" />
 
             <TextView

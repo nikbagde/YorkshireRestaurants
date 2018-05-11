@@ -1,4 +1,4 @@
-package abbie.example.com.sheffieldrestaurants;
+package abbie.example.com.yorkshirerestaurants;
 
 import org.junit.Test;
 

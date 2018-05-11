@@ -1,4 +1,4 @@
-package abbie.example.com.sheffieldrestaurants;
+package abbie.example.com.yorkshirerestaurants;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
