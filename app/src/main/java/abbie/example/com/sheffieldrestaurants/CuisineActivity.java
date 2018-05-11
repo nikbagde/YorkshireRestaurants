@@ -54,7 +54,6 @@ public class CuisineActivity extends AppCompatActivity {
         }
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void setEnterExitTransition(Intent intent){
         getWindow().setExitTransition(new Fade().setDuration(1000));

@@ -19,7 +19,6 @@ public class FavoritesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favorites);
     }
 
-
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.favorites_menu, menu);
@@ -40,14 +39,10 @@ public class FavoritesActivity extends AppCompatActivity {
         }
     }
 
-
-
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void setEnterExitTransition(Intent intent){
         getWindow().setExitTransition(new Fade().setDuration(1000));
         getWindow().setReenterTransition(new Fade().setDuration(1000));
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(FavoritesActivity.this).toBundle());
     }
-
 }
