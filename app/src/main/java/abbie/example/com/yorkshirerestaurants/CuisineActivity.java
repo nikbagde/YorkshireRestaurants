@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.v4.widget.CursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,6 +19,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
+import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant.RestaurantResults;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,10 +33,9 @@ public class CuisineActivity extends AppCompatActivity {
 
     @BindView(R.id.adView) AdView mAdView;
     @BindView(R.id.test_text) TextView textView;
+    @BindView(R.id.cuisine_RV) RecyclerView recyclerView;
 
     private ZomatoAPI.ZomatoApiCalls api;
-    private GridLayoutManager layoutManager;
-    private CuisineAdapter cursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +50,11 @@ public class CuisineActivity extends AppCompatActivity {
 
         api = retrofit.create(ZomatoAPI.ZomatoApiCalls.class);
 
-        RecyclerView recyclerView = findViewById(R.id.cuisine_RV);
-        layoutManager = new GridLayoutManager(this, 2);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
 
-       cursorAdapter = new CuisineAdapter(this);
-       recyclerView.setAdapter(cursorAdapter);
+        CuisineAdapter cursorAdapter = new CuisineAdapter(this);
+        recyclerView.setAdapter(cursorAdapter);
 
         fetchRestaurants();
 
