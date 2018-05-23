@@ -73,7 +73,7 @@ public class CuisineActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(@NonNull Call <RestaurantResults> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
     }

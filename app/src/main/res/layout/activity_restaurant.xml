@@ -113,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
-                android:text="Average Cost [2] : "
+                android:text="@string/average_cost_2"
                 android:textSize="16sp" />
 
             <TextView
@@ -133,7 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
-                android:text="Price Range : "
+                android:text="@string/price_range"
                 android:textSize="16sp" />
 
             <TextView
@@ -153,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
-                android:text="Online Delivery : "
+                android:text="@string/online_delivery"
                 android:textSize="16sp" />
 
             <TextView

@@ -8,6 +8,9 @@
 
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="copyright_symbol">Copyright symbol</string>
+    <string name="price_range">Price Range :</string>
+    <string name="online_delivery">Online Delivery :</string>
+    <string name="average_cost_2">Average Cost [2] :</string>
 
 
 </resources>
