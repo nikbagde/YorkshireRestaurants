@@ -18,13 +18,21 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import abbie.example.com.yorkshirerestaurants.API.ZomatoAPI;
 import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant.RestaurantResults;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -67,21 +75,26 @@ public class CuisineActivity extends AppCompatActivity {
     }
 
     public void fetchRestaurants() {
-        api.getRestaurantsBySearch("332", "city", "1", "20",
-                                                "53.382882", "-1.470300", "rating", "asc")
-        .enqueue(new Callback<RestaurantResults>() {
-            @Override
-            public void onResponse(@NonNull Call <RestaurantResults> call, @NonNull Response <RestaurantResults> response) {
-
-              
-
-            }
-
-            @Override
-            public void onFailure(@NonNull Call <RestaurantResults> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
+        Disposable disposable = api.getRestaurantsByCity("332", "city", "1", "20",
+                "53.382882", "-1.470300", "rating", "asc")
+                .subscribeOn(Schedulers.io())
+                .map(restaurantResults -> {
+                    List<Restaurant> returnList = new ArrayList<>();
+                    for (Restaurant.RestaurantWrapper result : restaurantResults.results) {
+                        returnList.add(result.restaurant);
+                    }
+                    return returnList;
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnTerminate(() -> {
+                    // hide progress bar if you have one
+                    // progressBar.setVisibility(View.INVISIBLE);
+                })
+                .subscribe(restaurants -> {
+                    // here's the list of restaurants
+                }, throwable -> {
+                    // error getting the list from API
+                });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
