@@ -3,6 +3,7 @@ package abbie.example.com.yorkshirerestaurants;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,13 +25,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.http.Query;
 
 public class CuisineActivity extends AppCompatActivity {
 
     @BindView(R.id.adView) AdView mAdView;
-    @BindView(R.id.button1) Button button;
 
     ZomatoAPI.ZomatoApiCalls api;
+    String entity_id, entity_type, start, count, lat, lon, sort, order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +55,16 @@ public class CuisineActivity extends AppCompatActivity {
     }
 
     public void fetchRestaurants() {
-        api.getRestaurantsBySearch(new Callback<Restaurant.RestaurantResults>() {
+        api.getRestaurantsBySearch(String entity_id, String entity_type, String start,
+                                    String count, String lat, String lon, String sort, String order)
+        .enqueue(new Callback<Restaurant.RestaurantResults>() {
             @Override
-            public void onResponse(Call<Restaurant.RestaurantResults> results, Response<Restaurant.RestaurantResults> response) {
-                Log.i("RESULTS FROM API", String.valueOf(response));
+            public void onResponse(@NonNull Call <Restaurant.RestaurantResults> call, @NonNull Response <Restaurant.RestaurantResults> response) {
+                Log.i("RESPONSE FROM CALL", String.valueOf(call));
             }
 
             @Override
-            public void onFailure(Call<Restaurant.RestaurantResults> results, Throwable t) {
+            public void onFailure(@NonNull Call <Restaurant.RestaurantResults> call, Throwable t) {
 
             }
         });
