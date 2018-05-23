@@ -34,6 +34,9 @@ public class Restaurant {
         public List<Restaurant> getResults() {
             return results;
         }
+        public void setResults(List<Restaurant> results) {
+            this.results = results;
+        }
     }
 
     public int getId() {

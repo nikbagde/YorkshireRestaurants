@@ -18,6 +18,8 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.util.List;
+
 import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant.RestaurantResults;
@@ -70,7 +72,9 @@ public class CuisineActivity extends AppCompatActivity {
         .enqueue(new Callback<RestaurantResults>() {
             @Override
             public void onResponse(@NonNull Call <RestaurantResults> call, @NonNull Response <RestaurantResults> response) {
-                response.body();
+
+              
+
             }
 
             @Override
