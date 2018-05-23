@@ -9,26 +9,24 @@ public class Restaurant {
     public int id;
     @SerializedName("name")
     public String name;
-    @SerializedName("address")
-    public String address;
-    @SerializedName("city")
-    public String city;
-    @SerializedName("lat")
-    public int lat;
-    @SerializedName("longt")
-    public int longt;
-    @SerializedName("phone_number")
-    public int phone_number;
-    @SerializedName("avg_cost")
+    @SerializedName("url")
+    public String url;
+    @SerializedName("location")
+    public String location;
+    @SerializedName("cuisines")
+    public int cuisines;
+    @SerializedName("average_cost_for_two")
     public int avg_cost;
     @SerializedName("price_range")
     public int price_range;
-    @SerializedName("img_url")
-    public String img_url;
-    @SerializedName("online_delivery")
+    @SerializedName("photos_url")
+    public String photos_url;
+    @SerializedName("menu_url")
+    public String menu_url;
+    @SerializedName("has_online_delivery")
     public int online_delivery;
-    @SerializedName("rating")
-    public int rating;
+    @SerializedName("user_rating")
+    public int user_rating;
 
     public static class RestaurantResults {
         private List<Restaurant> results;
@@ -53,44 +51,28 @@ public class Restaurant {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getUrl() {
+        return url;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getCity() {
-        return city;
+    public String getLocation() {
+        return location;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public int getLat() {
-        return lat;
+    public int getCuisines() {
+        return cuisines;
     }
 
-    public void setLat(int lat) {
-        this.lat = lat;
-    }
-
-    public int getLongt() {
-        return longt;
-    }
-
-    public void setLongt(int longt) {
-        this.longt = longt;
-    }
-
-    public int getPhone_number() {
-        return phone_number;
-    }
-
-    public void setPhone_number(int phone_number) {
-        this.phone_number = phone_number;
+    public void setCuisines(int cuisines) {
+        this.cuisines = cuisines;
     }
 
     public int getAvg_cost() {
@@ -109,12 +91,20 @@ public class Restaurant {
         this.price_range = price_range;
     }
 
-    public String getImg_url() {
-        return img_url;
+    public String getPhotos_url() {
+        return photos_url;
     }
 
-    public void setImg_url(String img_url) {
-        this.img_url = img_url;
+    public void setPhotos_url(String photos_url) {
+        this.photos_url = photos_url;
+    }
+
+    public String getMenu_url() {
+        return menu_url;
+    }
+
+    public void setMenu_url(String menu_url) {
+        this.menu_url = menu_url;
     }
 
     public int getOnline_delivery() {
@@ -125,11 +115,11 @@ public class Restaurant {
         this.online_delivery = online_delivery;
     }
 
-    public int getRating() {
-        return rating;
+    public int getUser_rating() {
+        return user_rating;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setUser_rating(int user_rating) {
+        this.user_rating = user_rating;
     }
 }

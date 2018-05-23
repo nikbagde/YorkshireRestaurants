@@ -1,29 +1,25 @@
 package abbie.example.com.yorkshirerestaurants;
 
 import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.v4.widget.CursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.transition.Fade;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-import java.util.List;
-
-import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
+import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant.RestaurantResults;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +28,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Query;
 
 public class CuisineActivity extends AppCompatActivity {
 
@@ -40,6 +35,8 @@ public class CuisineActivity extends AppCompatActivity {
     @BindView(R.id.test_text) TextView textView;
 
     private ZomatoAPI.ZomatoApiCalls api;
+    private GridLayoutManager layoutManager;
+    private CuisineAdapter cursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +50,13 @@ public class CuisineActivity extends AppCompatActivity {
                 .build();
 
         api = retrofit.create(ZomatoAPI.ZomatoApiCalls.class);
+
+        RecyclerView recyclerView = findViewById(R.id.cuisine_RV);
+        layoutManager = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(layoutManager);
+
+       cursorAdapter = new CuisineAdapter(this);
+       recyclerView.setAdapter(cursorAdapter);
 
         fetchRestaurants();
 

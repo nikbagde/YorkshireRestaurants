@@ -13,7 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- RECYCLER VIEW HERE FOR RESTS CUISINES -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cuisine_RV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <com.google.android.gms.ads.AdView
         android:layout_gravity="bottom"
