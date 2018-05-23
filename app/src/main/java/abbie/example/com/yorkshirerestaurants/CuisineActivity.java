@@ -21,7 +21,10 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.util.List;
+
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
+import abbie.example.com.yorkshirerestaurants.Data.Restaurant.RestaurantResults;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -62,20 +65,18 @@ public class CuisineActivity extends AppCompatActivity {
     public void fetchRestaurants() {
         api.getRestaurantsBySearch("332", "city", "1", "20",
                                                 "53.382882", "-1.470300", "rating", "asc")
-        .enqueue(new Callback<Restaurant.RestaurantResults>() {
+        .enqueue(new Callback<RestaurantResults>() {
             @Override
-            public void onResponse(@NonNull Call <Restaurant.RestaurantResults> call, @NonNull Response <Restaurant.RestaurantResults> response) {
-              
+            public void onResponse(@NonNull Call <RestaurantResults> call, @NonNull Response <RestaurantResults> response) {
+
             }
 
             @Override
-            public void onFailure(@NonNull Call <Restaurant.RestaurantResults> call, Throwable t) {
+            public void onFailure(@NonNull Call <RestaurantResults> call, Throwable t) {
 
             }
         });
     }
-
-
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
