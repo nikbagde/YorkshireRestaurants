@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context=".CuisineActivity">
 
+
+    <TextView
+        android:id="@+id/test_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <!-- RECYCLER VIEW HERE FOR RESTS CUISINES -->
 
     <com.google.android.gms.ads.AdView

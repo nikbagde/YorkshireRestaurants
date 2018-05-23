@@ -1,6 +1,7 @@
 package abbie.example.com.yorkshirerestaurants;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -14,6 +15,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -25,14 +28,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Query;
 
 public class CuisineActivity extends AppCompatActivity {
 
     @BindView(R.id.adView) AdView mAdView;
+    @BindView(R.id.test_text) TextView textView;
 
-    ZomatoAPI.ZomatoApiCalls api;
-    String entity_id, entity_type, start, count, lat, lon, sort, order;
+    private ZomatoAPI.ZomatoApiCalls api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,8 @@ public class CuisineActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://developers.zomato.com/api/v2.1/")
+                .baseUrl("https://developers.zomato.com/")
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         api = retrofit.create(ZomatoAPI.ZomatoApiCalls.class);
@@ -55,12 +60,12 @@ public class CuisineActivity extends AppCompatActivity {
     }
 
     public void fetchRestaurants() {
-        api.getRestaurantsBySearch(String entity_id, String entity_type, String start,
-                                    String count, String lat, String lon, String sort, String order)
+        api.getRestaurantsBySearch("332", "city", "1", "20",
+                                                "53.382882", "-1.470300", "rating", "asc")
         .enqueue(new Callback<Restaurant.RestaurantResults>() {
             @Override
             public void onResponse(@NonNull Call <Restaurant.RestaurantResults> call, @NonNull Response <Restaurant.RestaurantResults> response) {
-                Log.i("RESPONSE FROM CALL", String.valueOf(call));
+              
             }
 
             @Override

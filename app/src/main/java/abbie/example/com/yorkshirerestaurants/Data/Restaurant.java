@@ -1,20 +1,33 @@
 package abbie.example.com.yorkshirerestaurants.Data;
 
 import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 public class Restaurant {
 
+    @SerializedName("id")
     public int id;
+    @SerializedName("name")
     public String name;
+    @SerializedName("address")
     public String address;
+    @SerializedName("city")
     public String city;
+    @SerializedName("lat")
     public int lat;
+    @SerializedName("longt")
     public int longt;
+    @SerializedName("phone_number")
     public int phone_number;
+    @SerializedName("avg_cost")
     public int avg_cost;
+    @SerializedName("price_range")
     public int price_range;
+    @SerializedName("img_url")
     public String img_url;
+    @SerializedName("online_delivery")
     public int online_delivery;
+    @SerializedName("rating")
     public int rating;
 
     public static class RestaurantResults {
