@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Restaurant {
 
-    @SerializedName("restaurants")
-    public int restaurants;
     @SerializedName("id")
     public int id;
     @SerializedName("name")
@@ -31,18 +29,11 @@ public class Restaurant {
     public int user_rating;
 
     public static class RestaurantResults {
+        @SerializedName("restaurants")
         private List<Restaurant> results;
         public List<Restaurant> getResults() {
             return results;
         }
-    }
-
-    public int getRestaurants() {
-        return restaurants;
-    }
-
-    public void setRestaurants(int restaurants) {
-        this.restaurants = restaurants;
     }
 
     public int getId() {

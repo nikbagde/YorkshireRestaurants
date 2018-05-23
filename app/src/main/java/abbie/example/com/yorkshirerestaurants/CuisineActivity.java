@@ -70,7 +70,7 @@ public class CuisineActivity extends AppCompatActivity {
         .enqueue(new Callback<RestaurantResults>() {
             @Override
             public void onResponse(@NonNull Call <RestaurantResults> call, @NonNull Response <RestaurantResults> response) {
-
+                response.body();
             }
 
             @Override
