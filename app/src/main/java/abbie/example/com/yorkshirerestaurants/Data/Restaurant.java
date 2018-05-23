@@ -1,5 +1,7 @@
 package abbie.example.com.yorkshirerestaurants.Data;
 
+import java.util.List;
+
 public class Restaurant {
 
     public int id;
@@ -15,6 +17,12 @@ public class Restaurant {
     public int online_delivery;
     public int rating;
 
+    public static class RestaurantResults {
+        private List<Restaurant> results;
+        public List<Restaurant> getResults() {
+            return results;
+        }
+    }
 
     public int getId() {
         return id;
