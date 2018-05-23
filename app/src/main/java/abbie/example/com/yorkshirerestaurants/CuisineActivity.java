@@ -3,7 +3,6 @@ package abbie.example.com.yorkshirerestaurants;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,18 +23,11 @@ import java.util.List;
 import abbie.example.com.yorkshirerestaurants.API.ZomatoAPI;
 import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
-import abbie.example.com.yorkshirerestaurants.Data.Restaurant.RestaurantResults;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -46,6 +38,8 @@ public class CuisineActivity extends AppCompatActivity {
     @BindView(R.id.cuisine_RV) RecyclerView recyclerView;
 
     private ZomatoAPI.ZomatoApiCalls api;
+    private CuisineAdapter cuisineAdapter;
+    private Disposable disposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +57,8 @@ public class CuisineActivity extends AppCompatActivity {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
 
-        CuisineAdapter cursorAdapter = new CuisineAdapter(this);
-        recyclerView.setAdapter(cursorAdapter);
+        cuisineAdapter = new CuisineAdapter(this);
+        recyclerView.setAdapter(cuisineAdapter);
 
         fetchRestaurants();
 
@@ -75,8 +69,8 @@ public class CuisineActivity extends AppCompatActivity {
     }
 
     public void fetchRestaurants() {
-        Disposable disposable = api.getRestaurantsByCity("332", "city", "1", "20",
-                "53.382882", "-1.470300", "rating", "asc")
+        disposable = api.getRestaurants("332", "city", "1", "20",
+                                                    "53.382882", "-1.470300", "rating", "asc")
                 .subscribeOn(Schedulers.io())
                 .map(restaurantResults -> {
                     List<Restaurant> returnList = new ArrayList<>();
@@ -87,14 +81,10 @@ public class CuisineActivity extends AppCompatActivity {
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnTerminate(() -> {
-                    // hide progress bar if you have one
-                    // progressBar.setVisibility(View.INVISIBLE);
                 })
                 .subscribe(restaurants -> {
-                    // here's the list of restaurants
-                }, throwable -> {
-                    // error getting the list from API
-                });
+                    cuisineAdapter.setRestaurantList(restaurants);
+                }, Throwable::printStackTrace);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -122,5 +112,11 @@ public class CuisineActivity extends AppCompatActivity {
         getWindow().setExitTransition(new Fade().setDuration(1000));
         getWindow().setReenterTransition(new Fade().setDuration(1000));
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(CuisineActivity.this).toBundle());
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (disposable != null) disposable.dispose();
+        super.onDestroy();
     }
 }
