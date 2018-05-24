@@ -30,7 +30,7 @@ public class ZomatoAPI {
 
         @Headers("user-key: 81b9e0cc148b3fc6659c2b04a40fede5")
         @GET("api/v2.1/cuisines")
-        Call<List<Cuisine>> getCuisineId(@Query("city_id") String city_id,
+        Call<Cuisines> getCuisineId(@Query("city_id") String city_id,
                                          @Query("lat") String lat,
                                          @Query("lon") String lon);
     }

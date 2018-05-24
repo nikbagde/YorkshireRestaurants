@@ -17,11 +17,13 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.util.Collections;
 import java.util.List;
 
 import abbie.example.com.yorkshirerestaurants.API.ZomatoAPI;
 import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
 import abbie.example.com.yorkshirerestaurants.Data.Cuisine;
+import abbie.example.com.yorkshirerestaurants.Data.Cuisines;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -69,15 +71,17 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
 
     public void fetchCuisines() {
         service.getCuisineId("332", "53.382882", "-1.470300")
-                .enqueue(new Callback<List<Cuisine>>() {
+                .enqueue(new Callback<Cuisines>() {
                     @Override
-                    public void onResponse(Call<List<Cuisine>> call, Response<List<Cuisine>> response) {
-                        List<Cuisine> cuisines = response.body();
+                    public void onResponse(Call<Cuisines> call, Response<Cuisines> response) {
+                        List<Cuisine> cuisines = response.body().getCuisinesList();
+
                         cuisineAdapter.setCuisineList(cuisines);
+
                     }
 
                     @Override
-                    public void onFailure(Call<List<Cuisine>> call, Throwable t) {
+                    public void onFailure(Call<Cuisines> call, Throwable t) {
 
                     }
                 });
