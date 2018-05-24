@@ -1,5 +1,6 @@
 package abbie.example.com.yorkshirerestaurants.API;
 
+import abbie.example.com.yorkshirerestaurants.Data.Cuisines;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -18,12 +19,14 @@ public class ZomatoAPI {
                                                                 @Query("lat") String lat,
                                                                 @Query("lon") String lon,
                                                                 @Query("sort") String sort,
-                                                                      /*@Query("cuisines") String cuisine,*/
-                                                                      @Query("order") String order);
+                                                                @Query("cuisines") String cuisine,
+                                                                @Query("order") String order);
 
-       /* @Headers("user-key: 81b9e0cc148b3fc6659c2b04a40fede5")
+        @Headers("user-key: 81b9e0cc148b3fc6659c2b04a40fede5")
         @GET("api/v2.1/cuisines")
-        Observable<Restaurant.RestaurantResults> getCuisineId(@Query("city_id") String city_id);*/
+        Observable<Cuisines.CuisineResults> getCuisineId(@Query("city_id") String city_id,
+                                                         @Query("lat") String lat,
+                                                         @Query("lon") String lon);
 
 
     }
