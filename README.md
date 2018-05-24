@@ -1,4 +1,4 @@
-# Sheffield Restaurants
+# Yorkshire Restaurants
 
 [IN PROGRESS]
 
