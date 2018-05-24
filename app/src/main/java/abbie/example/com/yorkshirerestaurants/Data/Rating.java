@@ -8,11 +8,10 @@ public class Rating{
     public int aggregate_rating;
     @SerializedName("rating_text")
     public int rating_text;
-    @SerializedName("votes")
-    public int votes;
     @SerializedName("rating_color")
     public int rating_color;
-
+    @SerializedName("votes")
+    public int votes;
 
     public int getAggregate_rating() {
         return aggregate_rating;

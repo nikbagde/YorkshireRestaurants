@@ -1,11 +1,10 @@
 package abbie.example.com.yorkshirerestaurants.Data;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.SerializedName;
 
-public class Restaurant implements Parcelable {
+import java.util.List;
+
+public class Restaurant {
 
     @SerializedName("id")
     public int id;
@@ -13,8 +12,8 @@ public class Restaurant implements Parcelable {
     public String name;
     @SerializedName("url")
     public String url;
-    @SerializedName("cuisines")
-    public String cuisines;
+    @SerializedName("location")
+    public List<Location> locationList;
     @SerializedName("average_cost_for_two")
     public int avg_cost;
     @SerializedName("price_range")
@@ -23,32 +22,13 @@ public class Restaurant implements Parcelable {
     public String photos_url;
     @SerializedName("menu_url")
     public String menu_url;
+    @SerializedName("user_rating")
+    public List<Rating> userRatingList;
     @SerializedName("has_online_delivery")
     public int online_delivery;
+    @SerializedName("cuisines")
+    public String cuisines;
 
-    private Restaurant(Parcel in) {
-        id = in.readInt();
-        name = in.readString();
-        url = in.readString();
-        cuisines = in.readString();
-        avg_cost = in.readInt();
-        price_range = in.readInt();
-        photos_url = in.readString();
-        menu_url = in.readString();
-        online_delivery = in.readInt();
-    }
-
-    public static final Creator<Restaurant> CREATOR = new Creator<Restaurant>() {
-        @Override
-        public Restaurant createFromParcel(Parcel in) {
-            return new Restaurant(in);
-        }
-
-        @Override
-        public Restaurant[] newArray(int size) {
-            return new Restaurant[size];
-        }
-    };
 
     public int getId() {
         return id;
@@ -122,22 +102,19 @@ public class Restaurant implements Parcelable {
         this.online_delivery = online_delivery;
     }
 
-
-    @Override
-    public int describeContents() {
-        return 0;
+    public List<Location> getLocationList() {
+        return locationList;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
-        parcel.writeString(name);
-        parcel.writeString(url);
-        parcel.writeString(cuisines);
-        parcel.writeInt(avg_cost);
-        parcel.writeInt(price_range);
-        parcel.writeString(photos_url);
-        parcel.writeString(menu_url);
-        parcel.writeInt(online_delivery);
+    public void setLocationList(List<Location> locationList) {
+        this.locationList = locationList;
+    }
+
+    public List<Rating> getUserRatingList() {
+        return userRatingList;
+    }
+
+    public void setUserRatingList(List<Rating> userRatingList) {
+        this.userRatingList = userRatingList;
     }
 }

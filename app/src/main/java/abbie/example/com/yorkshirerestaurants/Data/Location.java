@@ -16,6 +16,8 @@ public class Location{
     public int lat;
     @SerializedName("longt")
     public int longt;
+    @SerializedName("zipcode")
+    public int zipcode;
 
     public String getAddress() {
         return address;
@@ -65,4 +67,13 @@ public class Location{
     public void setLongt(int longt) {
         this.longt = longt;
     }
+
+    public int getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(int zipcode) {
+        this.zipcode = zipcode;
+    }
+
 }

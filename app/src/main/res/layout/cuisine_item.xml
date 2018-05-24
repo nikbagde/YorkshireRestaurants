@@ -9,8 +9,8 @@
     android:padding="2dp">
 
     <TextView
-        android:background="@color/colorPrimary"
-        android:textColor="@color/white"
+        android:background="@color/white"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_gravity="center"
         android:gravity="center"
         android:padding="5dp"

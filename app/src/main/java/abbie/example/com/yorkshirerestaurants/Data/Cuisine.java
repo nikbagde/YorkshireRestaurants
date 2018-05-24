@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Cuisine implements Parcelable{
+public class Cuisine{
 
     @SerializedName("cuisine_id")
     private int cuisine_id;
@@ -33,31 +33,9 @@ public class Cuisine implements Parcelable{
         this.cuisine_name = cuisine_name;
     }
 
-    public static final Creator<Cuisine> CREATOR = new Creator<Cuisine>() {
-        @Override
-        public Cuisine createFromParcel(Parcel in) {
-            return new Cuisine(in);
-        }
-
-        @Override
-        public Cuisine[] newArray(int size) {
-            return new Cuisine[size];
-        }
-    };
 
     public Cuisine(int cuisine_id, String cuisine_name) {
         this.cuisine_id = cuisine_id;
         this.cuisine_name = cuisine_name;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(cuisine_id);
-        dest.writeString(cuisine_name);
     }
 }

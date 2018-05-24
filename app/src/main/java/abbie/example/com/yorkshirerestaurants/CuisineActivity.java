@@ -61,7 +61,7 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
 
         service = retrofit.create(ZomatoAPI.ZomatoApiCalls.class);
 
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
 
         cuisineAdapter = new CuisineAdapter(this, this);
