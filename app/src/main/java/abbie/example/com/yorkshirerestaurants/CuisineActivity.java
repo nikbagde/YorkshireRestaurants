@@ -22,6 +22,7 @@ import java.util.List;
 
 import abbie.example.com.yorkshirerestaurants.API.ZomatoAPI;
 import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
+import abbie.example.com.yorkshirerestaurants.Data.Cuisine;
 import abbie.example.com.yorkshirerestaurants.Data.Cuisines;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,7 +74,7 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
                 .enqueue(new Callback<List<Cuisines>>() {
                     @Override
                     public void onResponse(Call<List<Cuisines>> call, Response<List<Cuisines>> response) {
-                        List<Cuisines> cuisines = response.body();
+                        List<Cuisine> cuisines = response.body();
                     }
 
                     @Override

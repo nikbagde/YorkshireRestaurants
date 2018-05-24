@@ -10,11 +10,11 @@ import java.util.List;
 public class Cuisines implements Parcelable {
 
     @SerializedName("cuisines")
-    public List<Cuisines> cuisinesList;
+    public List<Cuisine> cuisinesList;
 
 
     protected Cuisines(Parcel in) {
-        cuisinesList = in.createTypedArrayList(Cuisines.CREATOR);
+        cuisinesList = in.createTypedArrayList(Cuisine.CREATOR);
     }
 
     public static final Creator<Cuisines> CREATOR = new Creator<Cuisines>() {
@@ -39,11 +39,11 @@ public class Cuisines implements Parcelable {
         dest.writeTypedList(cuisinesList);
     }
 
-    public List<Cuisines> getCuisinesList() {
+    public List<Cuisine> getCuisinesList() {
         return cuisinesList;
     }
 
-    public void setCuisinesList(List<Cuisines> cuisinesList) {
+    public void setCuisinesList(List<Cuisine> cuisinesList) {
         this.cuisinesList = cuisinesList;
     }
 }
