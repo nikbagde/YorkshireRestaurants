@@ -1,4 +1,4 @@
-package abbie.example.com.yorkshirerestaurants;
+package abbie.example.com.yorkshirerestaurants.Adapters;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;

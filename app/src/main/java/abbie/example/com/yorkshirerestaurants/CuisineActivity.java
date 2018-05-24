@@ -19,11 +19,11 @@ import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.Collections;
 import java.util.List;
 
 import abbie.example.com.yorkshirerestaurants.API.ZomatoAPI;
 import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
+import abbie.example.com.yorkshirerestaurants.Adapters.CuisineJsonAdapter;
 import abbie.example.com.yorkshirerestaurants.Data.Cuisine;
 import abbie.example.com.yorkshirerestaurants.Data.Cuisines;
 import butterknife.BindView;

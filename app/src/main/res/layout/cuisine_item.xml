@@ -8,12 +8,6 @@
     android:background="@color/colorPrimary"
     android:padding="2dp">
 
-    <ImageView
-        android:contentDescription="@string/background_image_for_cuisine_button"
-        android:id="@+id/cuisine_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <TextView
         android:background="@color/colorPrimary"
         android:textColor="@color/white"
@@ -21,9 +15,9 @@
         android:gravity="center"
         android:padding="5dp"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:id="@+id/cuisine_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 
 </android.support.v7.widget.CardView>
