@@ -19,7 +19,7 @@ public class CuisineAdapter extends RecyclerView.Adapter<CuisineAdapter.CuisineV
     private final CuisineItemClick listener;
 
     public CuisineAdapter(Context context, CuisineItemClick listener) {
-        cuisineList = new ArrayList<Cuisine>();
+        cuisineList = new ArrayList<>();
         mContext = context;
         this.listener = listener;
     }
@@ -38,9 +38,9 @@ public class CuisineAdapter extends RecyclerView.Adapter<CuisineAdapter.CuisineV
 
     @Override
     public void onBindViewHolder(CuisineViewHolder holder, int position) {
-        Cuisine cuisines = cuisineList.get(position);
+        Cuisine cuisine = cuisineList.get(position);
 
-        String title = cuisines.getCuisine_name();
+        String title = cuisine.getCuisine_name();
         holder.cuisineTitle.setText(title);
     }
 

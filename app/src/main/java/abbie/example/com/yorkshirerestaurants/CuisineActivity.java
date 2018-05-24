@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.Collections;
 import java.util.List;
@@ -48,9 +50,13 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
         setContentView(R.layout.activity_cuisine);
         ButterKnife.bind(this);
 
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Cuisine.class, new CuisineJsonAdapter())
+                .create();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://developers.zomato.com/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         service = retrofit.create(ZomatoAPI.ZomatoApiCalls.class);
@@ -75,14 +81,12 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
                     @Override
                     public void onResponse(Call<Cuisines> call, Response<Cuisines> response) {
                         List<Cuisine> cuisines = response.body().getCuisinesList();
-
                         cuisineAdapter.setCuisineList(cuisines);
-
                     }
 
                     @Override
                     public void onFailure(Call<Cuisines> call, Throwable t) {
-
+                        t.printStackTrace();
                     }
                 });
     }
