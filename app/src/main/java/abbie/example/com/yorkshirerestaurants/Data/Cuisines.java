@@ -1,38 +1,72 @@
 package abbie.example.com.yorkshirerestaurants.Data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class Cuisines {
+public class Cuisines implements Parcelable {
 
     @SerializedName("cuisine_id")
-    public int cuisine_id;
-    @SerializedName("cuisine_name")
-    public String cuisine_name;
+    private int cuisine_id;
+    @SerializedName("cuisine_title")
+    private String cuisine_title;
+    @SerializedName("cuisine")
+    private String cuisine;
 
-    public static class CuisineResults {
 
-        @SerializedName("cuisines")
-        public List<CuisineWrapper> results;
-
-        @Override
-        public String toString() {
-            return "CuisineResults{" + "results=" + results + '}';
-        }
-    }
-
-    public static class CuisineWrapper {
-        public Cuisines cuisines;
-
-        @Override
-        public String toString() {
-            return "CuisineWrapper{" + "cuisine=" + cuisines + '}';
-        }
+    private Cuisines(Parcel in) {
+        cuisine_id = in.readInt();
+        cuisine_title = in.readString();
+        cuisine = in.readString();
     }
 
     @Override
-    public String toString() {
-        return "Cuisines{" + "cuisine_id=" + cuisine_id + ", cuisine_name='" + cuisine_name + '\'' + '}';
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(cuisine_id);
+        dest.writeString(cuisine_title);
+        dest.writeString(cuisine);
     }
+
+    public int getCuisine_id() {
+        return cuisine_id;
+    }
+
+    public void setCuisine_id(int cuisine_id) {
+        this.cuisine_id = cuisine_id;
+    }
+
+    public String getCuisine_title() {
+        return cuisine_title;
+    }
+
+    public void setCuisine_title(String cuisine_title) {
+        this.cuisine_title = cuisine_title;
+    }
+
+    public String getCuisine() {
+        return cuisine;
+    }
+
+    public void setCuisine(String cuisine) {
+        this.cuisine = cuisine;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Cuisines> CREATOR = new Creator<Cuisines>() {
+        @Override
+        public Cuisines createFromParcel(Parcel in) {
+            return new Cuisines(in);
+        }
+
+        @Override
+        public Cuisines[] newArray(int size) {
+            return new Cuisines[size];
+        }
+    };
+
 }

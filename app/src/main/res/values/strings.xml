@@ -11,6 +11,7 @@
     <string name="price_range">Price Range :</string>
     <string name="online_delivery">Online Delivery :</string>
     <string name="average_cost_2">Average Cost [2] :</string>
+    <string name="background_image_for_cuisine_button">Background image for cuisine button.</string>
 
 
 </resources>

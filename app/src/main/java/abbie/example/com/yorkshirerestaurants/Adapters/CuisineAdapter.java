@@ -40,8 +40,7 @@ public class CuisineAdapter extends RecyclerView.Adapter<CuisineAdapter.CuisineV
     public void onBindViewHolder(CuisineViewHolder holder, int position) {
         Cuisines cuisines = cuisineList.get(position);
 
-        String title = cuisines.toString();
-
+        String title = cuisines.getCuisine_title();
         holder.cuisineTitle.setText(title);
     }
 

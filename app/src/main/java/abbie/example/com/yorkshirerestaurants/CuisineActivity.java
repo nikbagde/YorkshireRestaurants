@@ -13,33 +13,28 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import abbie.example.com.yorkshirerestaurants.API.ZomatoAPI;
 import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
 import abbie.example.com.yorkshirerestaurants.Data.Cuisines;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class CuisineActivity extends AppCompatActivity implements CuisineAdapter.CuisineItemClick {
 
-    @BindView(R.id.adView) AdView mAdView;
-    @BindView(R.id.cuisine_RV) RecyclerView recyclerView;
+    @BindView(R.id.adView)
+    AdView mAdView;
+    @BindView(R.id.cuisine_RV)
+    RecyclerView recyclerView;
 
-    private ZomatoAPI.ZomatoApiCalls api;
+    private ZomatoAPI.ZomatoApiCalls service;
     private CuisineAdapter cuisineAdapter;
-    private Disposable disposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +42,15 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
         setContentView(R.layout.activity_cuisine);
         ButterKnife.bind(this);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://developers.zomato.com/")
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("https://developers.zomato.com/")
+                .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
 
-        api = retrofit.create(ZomatoAPI.ZomatoApiCalls.class);
+        service = restAdapter.create(ZomatoAPI.ZomatoApiCalls.class);
 
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
 
         cuisineAdapter = new CuisineAdapter(this, this);
@@ -70,22 +65,17 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
     }
 
     public void fetchCuisines() {
-        disposable = api.getCuisineId("332","53.382882", "-1.470300")
-                .subscribeOn(Schedulers.io())
-                .map(cuisineResults -> {
-                    List<Cuisines> returnList = new ArrayList<>();
-                    for (Cuisines.CuisineWrapper result : cuisineResults.results) {
-                        returnList.add(result.cuisines);
-                    }
-                    return returnList;
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnTerminate(() -> {
-                })
-                .subscribe(cuisines -> {
-                   cuisineAdapter.setCuisineList(cuisines);
-                }, Throwable::printStackTrace);
+       service.getCuisineId(new Callback<List<Cuisines>>() {
+           @Override
+           public void success(List<Cuisines> cuisines, Response response) {
+               cuisineAdapter.setCuisineList(cuisines);
+           }
 
+           @Override
+           public void failure(RetrofitError error) {
+               error.printStackTrace();
+           }
+       });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,7 +89,7 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
         switch (item.getItemId()) {
             case R.id.favorites_menu:
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    setEnterExitTransition(new Intent(CuisineActivity.this,FavoritesActivity.class));
+                    setEnterExitTransition(new Intent(CuisineActivity.this, FavoritesActivity.class));
                 }
                 startActivity(new Intent(this, FavoritesActivity.class));
                 return true;
@@ -109,7 +99,7 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void setEnterExitTransition(Intent intent){
+    private void setEnterExitTransition(Intent intent) {
         getWindow().setExitTransition(new Fade().setDuration(1000));
         getWindow().setReenterTransition(new Fade().setDuration(1000));
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(CuisineActivity.this).toBundle());
@@ -117,7 +107,6 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
 
     @Override
     protected void onDestroy() {
-        if (disposable != null) disposable.dispose();
         super.onDestroy();
     }
 
