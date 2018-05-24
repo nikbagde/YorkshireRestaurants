@@ -39,6 +39,10 @@ public class Cuisines implements Parcelable {
         dest.writeTypedList(cuisinesList);
     }
 
+    public Cuisines(List<Cuisine> cuisinesList) {
+        this.cuisinesList = cuisinesList;
+    }
+
     public List<Cuisine> getCuisinesList() {
         return cuisinesList;
     }

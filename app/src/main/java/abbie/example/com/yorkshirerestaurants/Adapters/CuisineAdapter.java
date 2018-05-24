@@ -10,21 +10,21 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import abbie.example.com.yorkshirerestaurants.Data.Cuisines;
+import abbie.example.com.yorkshirerestaurants.Data.Cuisine;
 import abbie.example.com.yorkshirerestaurants.R;
 
 public class CuisineAdapter extends RecyclerView.Adapter<CuisineAdapter.CuisineViewHolder> {
-    private List<Cuisines> cuisineList;
+    private List<Cuisine> cuisineList;
     private final Context mContext;
     private final CuisineItemClick listener;
 
     public CuisineAdapter(Context context, CuisineItemClick listener) {
-        cuisineList = new ArrayList<>();
+        cuisineList = new ArrayList<Cuisine>();
         mContext = context;
         this.listener = listener;
     }
 
-    public void setCuisineList(List<Cuisines> cuisineList) {
+    public void setCuisineList(List<Cuisine> cuisineList) {
         this.cuisineList.clear();
         this.cuisineList.addAll(cuisineList);
         notifyDataSetChanged();
@@ -38,9 +38,9 @@ public class CuisineAdapter extends RecyclerView.Adapter<CuisineAdapter.CuisineV
 
     @Override
     public void onBindViewHolder(CuisineViewHolder holder, int position) {
-        Cuisines cuisines = cuisineList.get(position);
+        Cuisine cuisines = cuisineList.get(position);
 
-        String title = cuisines.getCuisine_title();
+        String title = cuisines.getCuisine_name();
         holder.cuisineTitle.setText(title);
     }
 
@@ -65,6 +65,6 @@ public class CuisineAdapter extends RecyclerView.Adapter<CuisineAdapter.CuisineV
     }
 
     public interface CuisineItemClick{
-        void onCuisineItemClick(Cuisines cuisines);
+        void onCuisineItemClick(Cuisine cuisines);
     }
 }

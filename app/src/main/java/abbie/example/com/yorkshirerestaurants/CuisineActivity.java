@@ -1,7 +1,6 @@
 package abbie.example.com.yorkshirerestaurants;
 
 import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -23,7 +22,6 @@ import java.util.List;
 import abbie.example.com.yorkshirerestaurants.API.ZomatoAPI;
 import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
 import abbie.example.com.yorkshirerestaurants.Data.Cuisine;
-import abbie.example.com.yorkshirerestaurants.Data.Cuisines;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -71,14 +69,15 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
 
     public void fetchCuisines() {
         service.getCuisineId("332", "53.382882", "-1.470300")
-                .enqueue(new Callback<List<Cuisines>>() {
+                .enqueue(new Callback<List<Cuisine>>() {
                     @Override
-                    public void onResponse(Call<List<Cuisines>> call, Response<List<Cuisines>> response) {
+                    public void onResponse(Call<List<Cuisine>> call, Response<List<Cuisine>> response) {
                         List<Cuisine> cuisines = response.body();
+                        cuisineAdapter.setCuisineList(cuisines);
                     }
 
                     @Override
-                    public void onFailure(Call<List<Cuisines>> call, Throwable t) {
+                    public void onFailure(Call<List<Cuisine>> call, Throwable t) {
 
                     }
                 });
@@ -117,7 +116,7 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
     }
 
     @Override
-    public void onCuisineItemClick(Cuisines cuisines) {
+    public void onCuisineItemClick(Cuisine cuisines) {
         Toast.makeText(getApplicationContext(), "clicked " + cuisines, Toast.LENGTH_LONG).show();
     }
 }

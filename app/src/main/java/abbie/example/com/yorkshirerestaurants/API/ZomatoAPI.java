@@ -2,6 +2,7 @@ package abbie.example.com.yorkshirerestaurants.API;
 
 import java.util.List;
 
+import abbie.example.com.yorkshirerestaurants.Data.Cuisine;
 import abbie.example.com.yorkshirerestaurants.Data.Cuisines;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
 import retrofit2.Call;
@@ -29,9 +30,9 @@ public class ZomatoAPI {
 
         @Headers("user-key: 81b9e0cc148b3fc6659c2b04a40fede5")
         @GET("api/v2.1/cuisines")
-        Call<List<Cuisines>> getCuisineId(@Query("city_id") String city_id,
-                                          @Query("lat") String lat,
-                                          @Query("lon") String lon);
+        Call<List<Cuisine>> getCuisineId(@Query("city_id") String city_id,
+                                         @Query("lat") String lat,
+                                         @Query("lon") String lon);
     }
 }
 
