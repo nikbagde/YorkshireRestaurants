@@ -1,6 +1,7 @@
 package abbie.example.com.yorkshirerestaurants;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -73,7 +74,6 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
                     @Override
                     public void onResponse(Call<List<Cuisines>> call, Response<List<Cuisines>> response) {
                         List<Cuisines> cuisines = response.body();
-                        cuisineAdapter.setCuisineList(cuisines);
                     }
 
                     @Override

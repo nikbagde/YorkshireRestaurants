@@ -3,7 +3,6 @@ package abbie.example.com.yorkshirerestaurants.Data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 public class Restaurant implements Parcelable {
@@ -15,7 +14,7 @@ public class Restaurant implements Parcelable {
     @SerializedName("url")
     public String url;
     @SerializedName("cuisines")
-    public List<Cuisines> cuisinesList;
+    public String cuisines;
     @SerializedName("average_cost_for_two")
     public int avg_cost;
     @SerializedName("price_range")
@@ -31,6 +30,7 @@ public class Restaurant implements Parcelable {
         id = in.readInt();
         name = in.readString();
         url = in.readString();
+        cuisines = in.readString();
         avg_cost = in.readInt();
         price_range = in.readInt();
         photos_url = in.readString();
@@ -74,12 +74,12 @@ public class Restaurant implements Parcelable {
         this.url = url;
     }
 
-    public List<Cuisines> getCuisines() {
-        return cuisinesList;
+    public String getCuisines() {
+        return cuisines;
     }
 
-    public void setCuisines(List<Cuisines> cuisinesList) {
-        this.cuisinesList = cuisinesList;
+    public void setCuisines(String cuisines) {
+        this.cuisines = cuisines;
     }
 
     public int getAvg_cost() {
@@ -133,7 +133,7 @@ public class Restaurant implements Parcelable {
         parcel.writeInt(id);
         parcel.writeString(name);
         parcel.writeString(url);
-        parcel.writeTypedList(cuisinesList);
+        parcel.writeString(cuisines);
         parcel.writeInt(avg_cost);
         parcel.writeInt(price_range);
         parcel.writeString(photos_url);
