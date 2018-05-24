@@ -13,18 +13,22 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
 import java.util.List;
+
 import abbie.example.com.yorkshirerestaurants.API.ZomatoAPI;
 import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
 import abbie.example.com.yorkshirerestaurants.Data.Cuisines;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CuisineActivity extends AppCompatActivity implements CuisineAdapter.CuisineItemClick {
 
@@ -42,13 +46,12 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
         setContentView(R.layout.activity_cuisine);
         ButterKnife.bind(this);
 
-
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://developers.zomato.com/")
-                .setLogLevel(RestAdapter.LogLevel.FULL)
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://developers.zomato.com/")
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        service = restAdapter.create(ZomatoAPI.ZomatoApiCalls.class);
+        service = retrofit.create(ZomatoAPI.ZomatoApiCalls.class);
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
@@ -65,17 +68,19 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
     }
 
     public void fetchCuisines() {
-       service.getCuisineId(new Callback<List<Cuisines>>() {
-           @Override
-           public void success(List<Cuisines> cuisines, Response response) {
-               cuisineAdapter.setCuisineList(cuisines);
-           }
+        service.getCuisineId("332", "53.382882", "-1.470300")
+                .enqueue(new Callback<List<Cuisines>>() {
+                    @Override
+                    public void onResponse(Call<List<Cuisines>> call, Response<List<Cuisines>> response) {
+                        List<Cuisines> cuisines = response.body();
+                        cuisineAdapter.setCuisineList(cuisines);
+                    }
 
-           @Override
-           public void failure(RetrofitError error) {
-               error.printStackTrace();
-           }
-       });
+                    @Override
+                    public void onFailure(Call<List<Cuisines>> call, Throwable t) {
+
+                    }
+                });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

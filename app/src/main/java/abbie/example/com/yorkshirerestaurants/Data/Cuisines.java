@@ -14,7 +14,6 @@ public class Cuisines implements Parcelable {
     @SerializedName("cuisine")
     private String cuisine;
 
-
     private Cuisines(Parcel in) {
         cuisine_id = in.readInt();
         cuisine_title = in.readString();
