@@ -12,7 +12,6 @@ import android.transition.Fade;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -125,6 +124,11 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
 
     @Override
     public void onCuisineItemClick(Cuisine cuisines) {
-        Toast.makeText(getApplicationContext(), "clicked " + cuisines, Toast.LENGTH_LONG).show();
+        int id = cuisines.getCuisine_id();
+
+        Intent intent = new Intent(CuisineActivity.this, RestaurantsListActivity.class);
+        intent.putExtra("CUISINE_ID", id);
+        startActivity(intent);
+
     }
 }

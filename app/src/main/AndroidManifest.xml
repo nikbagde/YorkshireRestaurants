@@ -30,8 +30,8 @@
             android:theme="@android:style/Theme.Translucent" />
 
         <activity android:name=".FavoritesActivity" />
-        <activity android:name=".RestaurantsListActivity" />
-        <activity android:name=".RestaurantActivity"/>
+        <activity android:name=".RestaurantsActivity" />
+        <activity android:name=".RestaurantsListActivity"/>
     </application>
 
 </manifest>

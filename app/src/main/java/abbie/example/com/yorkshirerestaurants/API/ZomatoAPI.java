@@ -1,7 +1,7 @@
 package abbie.example.com.yorkshirerestaurants.API;
 
 import abbie.example.com.yorkshirerestaurants.Data.Cuisines;
-import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
+import abbie.example.com.yorkshirerestaurants.Data.Restaurants;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -12,15 +12,15 @@ public class ZomatoAPI {
 
         @Headers("user-key: 81b9e0cc148b3fc6659c2b04a40fede5")
         @GET("api/v2.1/search")
-        Call<Restaurant> getRestaurants(@Query("entity_id") String entity_id,
-                                            @Query("entity_type") String entity_type,
-                                            @Query("start") String start,
-                                            @Query("count") String count,
-                                            @Query("lat") String lat,
-                                            @Query("lon") String lon,
-                                            @Query("sort") String sort,
-                                            @Query("cuisines") String cuisine,
-                                            @Query("order") String order);
+        Call<Restaurants> getRestaurants(@Query("entity_id") String entity_id,
+                                         @Query("entity_type") String entity_type,
+                                         @Query("start") String start,
+                                         @Query("count") String count,
+                                         @Query("lat") String lat,
+                                         @Query("lon") String lon,
+                                         @Query("sort") String sort,
+                                         @Query("cuisines") int cuisine,
+                                         @Query("order") String order);
 
 
         @Headers("user-key: 81b9e0cc148b3fc6659c2b04a40fede5")

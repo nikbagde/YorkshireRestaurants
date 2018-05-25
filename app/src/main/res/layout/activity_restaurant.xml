@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="abbie.example.com.yorkshirerestaurants.RestaurantActivity">
+    tools:context="abbie.example.com.yorkshirerestaurants.RestaurantsListActivity">
 
     <View
         android:elevation="4dp"
@@ -182,7 +182,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="recyler view here for reviews"/>
-
-
 
 </LinearLayout>
