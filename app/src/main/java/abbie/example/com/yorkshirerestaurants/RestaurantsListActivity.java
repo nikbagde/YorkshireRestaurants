@@ -35,7 +35,7 @@ public class RestaurantsListActivity extends AppCompatActivity implements Restau
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant);
+        setContentView(R.layout.activity_restaurants_list);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -55,9 +55,7 @@ public class RestaurantsListActivity extends AppCompatActivity implements Restau
 
         fetchRestaurants();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         restaurantAdapter = new RestaurantAdapter(this, this);
         recyclerView.setAdapter(restaurantAdapter);
 
@@ -75,7 +73,7 @@ public class RestaurantsListActivity extends AppCompatActivity implements Restau
 
                     @Override
                     public void onFailure(Call<Restaurants> call, Throwable t) {
-
+                        t.printStackTrace();
                     }
                 });
     }

@@ -1,8 +1,5 @@
 package abbie.example.com.yorkshirerestaurants.Data;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.SerializedName;
 
 public class Cuisine{
@@ -11,11 +8,6 @@ public class Cuisine{
     private int cuisine_id;
     @SerializedName("cuisine_name")
     private String cuisine_name;
-
-    protected Cuisine(Parcel in) {
-        cuisine_id = in.readInt();
-        cuisine_name = in.readString();
-    }
 
     public int getCuisine_id() {
         return cuisine_id;

@@ -129,6 +129,5 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
         Intent intent = new Intent(CuisineActivity.this, RestaurantsListActivity.class);
         intent.putExtra("CUISINE_ID", id);
         startActivity(intent);
-
     }
 }

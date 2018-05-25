@@ -5,13 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
 import abbie.example.com.yorkshirerestaurants.R;
-import abbie.example.com.yorkshirerestaurants.RestaurantsListActivity;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
     private List<Restaurant> restaurantList;
@@ -23,7 +23,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         mContext = context;
         this.listener = listener;
     }
-
 
     public void setRestaurantList(List<Restaurant> restaurantList) {
         this.restaurantList.clear();
@@ -41,8 +40,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     public void onBindViewHolder(RestaurantAdapter.RestaurantViewHolder holder, int position) {
         Restaurant restaurant = restaurantList.get(position);
 
+        String restaurant_name = restaurant.getName();
+        holder.restaurant_name.setText(restaurant_name);
     }
-
 
     @Override
     public int getItemCount() {
@@ -50,9 +50,12 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     }
 
     public class RestaurantViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        TextView restaurant_name;
 
         public RestaurantViewHolder(View view) {
             super(view);
+            restaurant_name = view.findViewById(R.id.restaurant_name);
+            view.setOnClickListener(this);
 
         }
 

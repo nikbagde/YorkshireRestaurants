@@ -1,8 +1,5 @@
 package abbie.example.com.yorkshirerestaurants.Data;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

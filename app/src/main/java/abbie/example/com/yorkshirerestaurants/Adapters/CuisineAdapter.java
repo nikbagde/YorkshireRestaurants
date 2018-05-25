@@ -56,6 +56,7 @@ public class CuisineAdapter extends RecyclerView.Adapter<CuisineAdapter.CuisineV
         public CuisineViewHolder(View view) {
             super(view);
             cuisineTitle = view.findViewById(R.id.cuisine_title);
+            view.setOnClickListener(this);
         }
 
         @Override
