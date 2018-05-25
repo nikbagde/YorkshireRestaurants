@@ -3,6 +3,7 @@ package abbie.example.com.yorkshirerestaurants;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Parcelable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,11 +17,15 @@ import android.view.MenuItem;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import abbie.example.com.yorkshirerestaurants.API.ZomatoAPI;
 import abbie.example.com.yorkshirerestaurants.Adapters.RestaurantAdapter;
 import abbie.example.com.yorkshirerestaurants.Adapters.RestaurantJsonAdapter;
+import abbie.example.com.yorkshirerestaurants.Data.Location;
+import abbie.example.com.yorkshirerestaurants.Data.Rating;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurants;
 import butterknife.BindView;
@@ -123,7 +128,37 @@ public class RestaurantsListActivity extends AppCompatActivity implements Restau
 
     @Override
     public void onRestaurantItemClick(Restaurant restaurant) {
+        Location location = restaurant.getLocation();
+        String menu_url = restaurant.getMenu_url();
+        String restaurant_name = restaurant.getName();
+        int has_online_delivery = restaurant.getOnline_delivery();
+        String photo_url = restaurant.getPhotos_url();
+        String web_url = restaurant.getUrl();
+        Rating rating = restaurant.getUserRatingList();
 
+        String location_TAG = "Location : ";
+        String menu_url_TAG = "Menu URL : ";
+        String name_TAG = "Restaurants Name : ";
+        String delivery_TAG = "Has online delivery : ";
+        String photo_url_TAG = "Photo URL : ";
+        String web_url_TAG = "Web URL : ";
+        String rating_TAG = "Rating : ";
 
+       // List<Location> locations;
+       // locations = restaurant.getLocation());
+
+      //  List<Rating> ratings;
+      //  ratings = restaurant.getUserRatingList());
+
+        Intent intent = new Intent(RestaurantsListActivity.this, RestaurantsActivity.class);
+        intent.putExtra(menu_url_TAG, menu_url);
+      //intent.putParcelableArrayListExtra(location_TAG, (ArrayList<? extends Parcelable>) locations);
+        intent.putExtra(name_TAG, restaurant_name);
+        intent.putExtra(delivery_TAG, has_online_delivery);
+        intent.putExtra(photo_url_TAG, photo_url);
+        intent.putExtra(web_url_TAG, web_url);
+     // intent.putParcelableArrayListExtra(rating_TAG, (ArrayList<? extends Parcelable>) ratings);
+
+        startActivity(intent);
     }
 }

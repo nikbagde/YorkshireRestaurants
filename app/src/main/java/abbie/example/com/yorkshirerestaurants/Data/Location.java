@@ -1,8 +1,11 @@
 package abbie.example.com.yorkshirerestaurants.Data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Location{
+public class Location implements Parcelable {
 
     @SerializedName("address")
     public String address;
@@ -18,6 +21,44 @@ public class Location{
     public String longt;
     @SerializedName("zipcode")
     public String zipcode;
+
+    protected Location(Parcel in) {
+        address = in.readString();
+        locality = in.readString();
+        city = in.readString();
+        city_id = in.readString();
+        lat = in.readString();
+        longt = in.readString();
+        zipcode = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(address);
+        dest.writeString(locality);
+        dest.writeString(city);
+        dest.writeString(city_id);
+        dest.writeString(lat);
+        dest.writeString(longt);
+        dest.writeString(zipcode);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Location> CREATOR = new Creator<Location>() {
+        @Override
+        public Location createFromParcel(Parcel in) {
+            return new Location(in);
+        }
+
+        @Override
+        public Location[] newArray(int size) {
+            return new Location[size];
+        }
+    };
 
     public String getAddress() {
         return address;

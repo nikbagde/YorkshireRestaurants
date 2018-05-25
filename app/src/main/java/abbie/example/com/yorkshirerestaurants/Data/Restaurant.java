@@ -12,8 +12,6 @@ public class Restaurant {
     public String url;
     @SerializedName("location")
     public Location locationList;
-    @SerializedName("average_cost_for_two")
-    public int avg_cost;
     @SerializedName("price_range")
     public int price_range;
     @SerializedName("photos_url")
@@ -58,14 +56,6 @@ public class Restaurant {
 
     public void setCuisines(String cuisines) {
         this.cuisines = cuisines;
-    }
-
-    public int getAvg_cost() {
-        return avg_cost;
-    }
-
-    public void setAvg_cost(int avg_cost) {
-        this.avg_cost = avg_cost;
     }
 
     public int getPrice_range() {
