@@ -56,7 +56,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             super(view);
             restaurant_name = view.findViewById(R.id.restaurant_name);
             view.setOnClickListener(this);
-
         }
 
         @Override

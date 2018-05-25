@@ -30,5 +30,3 @@ public class ZomatoAPI {
                                          @Query("lon") String lon);
     }
 }
-
-

@@ -42,6 +42,8 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
 
     private ZomatoAPI.ZomatoApiCalls service;
     private CuisineAdapter cuisineAdapter;
+    private String TAG = "CUISINE_ID";
+    private String BASE_URL = "https://developers.zomato.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://developers.zomato.com/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -118,16 +120,11 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
     public void onCuisineItemClick(Cuisine cuisines) {
         int id = cuisines.getCuisine_id();
 
         Intent intent = new Intent(CuisineActivity.this, RestaurantsListActivity.class);
-        intent.putExtra("CUISINE_ID", id);
+        intent.putExtra(TAG, id);
         startActivity(intent);
     }
 }

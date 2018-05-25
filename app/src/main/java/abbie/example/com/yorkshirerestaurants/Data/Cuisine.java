@@ -25,7 +25,6 @@ public class Cuisine{
         this.cuisine_name = cuisine_name;
     }
 
-
     public Cuisine(int cuisine_id, String cuisine_name) {
         this.cuisine_id = cuisine_id;
         this.cuisine_name = cuisine_name;

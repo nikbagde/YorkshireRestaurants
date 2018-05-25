@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Restaurant {
 
     @SerializedName("id")
-    public int id;
+    public String id;
     @SerializedName("name")
     public String name;
     @SerializedName("url")
@@ -28,11 +28,11 @@ public class Restaurant {
     public String cuisines;
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

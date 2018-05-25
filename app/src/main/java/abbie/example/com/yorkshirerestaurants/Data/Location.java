@@ -13,11 +13,11 @@ public class Location{
     @SerializedName("city_id")
     public String city_id;
     @SerializedName("lat")
-    public int lat;
+    public String lat;
     @SerializedName("longt")
-    public int longt;
+    public String longt;
     @SerializedName("zipcode")
-    public int zipcode;
+    public String zipcode;
 
     public String getAddress() {
         return address;
@@ -52,27 +52,27 @@ public class Location{
     }
 
 
-    public int getLat() {
+    public String getLat() {
         return lat;
     }
 
-    public void setLat(int lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 
-    public int getLongt() {
+    public String getLongt() {
         return longt;
     }
 
-    public void setLongt(int longt) {
+    public void setLongt(String longt) {
         this.longt = longt;
     }
 
-    public int getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 
