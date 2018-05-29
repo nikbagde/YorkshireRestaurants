@@ -27,11 +27,16 @@ public class RestaurantsActivity extends AppCompatActivity {
     private List<Rating> rating;
     private List<Location> location;
 
-    @BindView(R.id.address_tv_1) TextView address_line_1;
-    @BindView(R.id.address_tv_2) TextView address_line_2;
-    @BindView(R.id.address_tv_3) TextView address_line_3;
-    @BindView(R.id.online_delivery_tv) TextView online_delivery_tv;
-    @BindView(R.id.menu_url_icon) ImageView menu_url_iv;
+    @BindView(R.id.address_tv_1)
+    TextView address_line_1;
+    @BindView(R.id.address_tv_2)
+    TextView address_line_2;
+    @BindView(R.id.address_tv_3)
+    TextView address_line_3;
+    @BindView(R.id.online_delivery_tv)
+    TextView online_delivery_tv;
+    @BindView(R.id.menu_url_icon)
+    ImageView menu_url_iv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +52,8 @@ public class RestaurantsActivity extends AppCompatActivity {
             photo_url = extras.getString("Photo URL : ");
             web_url = extras.getString("Web URL : ");
 
-           // location = this.getIntent().getParcelableArrayListExtra("Location : ");
-          //  rating = this.getIntent().getParcelableArrayListExtra("Rating : ");
+            //location = this.getIntent().getParcelableArrayListExtra("Location : ");
+            //rating = this.getIntent().getParcelableArrayListExtra("Rating : ");
         }
 
         getSupportActionBar().setTitle(name);
@@ -60,9 +65,9 @@ public class RestaurantsActivity extends AppCompatActivity {
         //get rating list and add in recyclerview to scroll through them
         //implement appbar for image, menu and three icons?
 
-        if(delivery == 0){
+        if (delivery == 0) {
             online_delivery_tv.setText(" " + R.string.not_available);
-        } else if (delivery == 1){
+        } else if (delivery == 1) {
             online_delivery_tv.setText(" " + R.string.available);
         }
 

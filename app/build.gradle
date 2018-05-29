@@ -43,5 +43,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    //room libs
+    def room_version = "1.1.0"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 }
 apply plugin: 'com.google.gms.google-services'
