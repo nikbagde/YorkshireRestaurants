@@ -1,9 +1,14 @@
 package abbie.example.com.yorkshirerestaurants.Data;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "restaurantTable")
 public class Restaurant {
 
+    @PrimaryKey(autoGenerate = false)
     @SerializedName("id")
     public String id;
     @SerializedName("name")
