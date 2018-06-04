@@ -5,17 +5,20 @@ import android.arch.persistence.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "restaurantTable")
+import io.reactivex.annotations.NonNull;
+
+//@Entity(tableName = "restaurantTable")
 public class Restaurant {
 
-    @PrimaryKey(autoGenerate = false)
-    @SerializedName("id")
+    //@PrimaryKey(autoGenerate = false)
+    //@SerializedName("id")
+    @NonNull
     public String id;
     @SerializedName("name")
     public String name;
     @SerializedName("url")
     public String url;
-    @SerializedName("location")
+    //@SerializedName("location")
     public Location locationList;
     @SerializedName("price_range")
     public int price_range;
@@ -23,7 +26,7 @@ public class Restaurant {
     public String photos_url;
     @SerializedName("menu_url")
     public String menu_url;
-    @SerializedName("user_rating")
+    //@SerializedName("user_rating")
     public Rating userRatingList;
     @SerializedName("has_online_delivery")
     public int online_delivery;

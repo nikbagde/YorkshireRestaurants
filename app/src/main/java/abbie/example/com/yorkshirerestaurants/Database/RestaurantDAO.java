@@ -12,21 +12,21 @@ import java.util.List;
 
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
 
-@Dao
-public interface RestaurantDAO {
+//@Dao
+//public interface RestaurantDAO {
 
-    @Query("SELECT * FROM restaurantTable")
-    LiveData<List<Restaurant>> loadAllResaurants();
+  //  @Query("SELECT * FROM restaurantTable")
+  //  LiveData<List<Restaurant>> loadAllResaurants();
 
-    @Insert
-    void insertResaurant(Restaurant RestaurantEntry);
+  //  @Insert
+   // void insertResaurant(Restaurant RestaurantEntry);
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    void updateResaurant(Restaurant resaurantEntry);
+   // @Update(onConflict = OnConflictStrategy.REPLACE)
+  //  void updateResaurant(Restaurant resaurantEntry);
 
-    @Delete
-    void deleteResaurant(Restaurant resaurantEntry);
+  //  @Delete
+   // void deleteResaurant(Restaurant resaurantEntry);
 
-    @Query("SELECT * FROM restaurantTable WHERE id = :id")
-    LiveData<Restaurant> loadResaurantById(int id);
-}
+   // @Query("SELECT * FROM restaurantTable WHERE id = :id")
+   // LiveData<Restaurant> loadResaurantById(int id);
+//}
