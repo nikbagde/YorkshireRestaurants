@@ -57,6 +57,7 @@ public class RestaurantsListActivity extends AppCompatActivity implements Restau
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             cuisineID = extras.getInt("CUISINE_ID");
+
         }
 
         Gson gson = new GsonBuilder()

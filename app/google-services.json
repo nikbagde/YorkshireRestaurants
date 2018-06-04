@@ -15,12 +15,24 @@
       },
       "oauth_client": [
         {
+          "client_id": "843776764274-dmf6ahmgjfo6i4f9632cv59da91rkm13.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "android.example.com.sheffieldrestaurants",
+            "certificate_hash": "8b078c9e3a2d2492e70ce5d3ba3c1c6de8c794d0"
+          }
+        },
+        {
           "client_id": "843776764274-smr8j8q2n6d4o2vg669pr7pq0qcelgot.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "android.example.com.sheffieldrestaurants",
             "certificate_hash": "a0142b0cbe550e4f8d453da1573b042e1389f684"
           }
+        },
+        {
+          "client_id": "843776764274-7s4i6vblt5i4muevaeb4ha11sjrne137.apps.googleusercontent.com",
+          "client_type": 3
         },
         {
           "client_id": "843776764274-7s4i6vblt5i4muevaeb4ha11sjrne137.apps.googleusercontent.com",

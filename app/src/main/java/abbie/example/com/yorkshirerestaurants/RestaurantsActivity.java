@@ -37,6 +37,8 @@ public class RestaurantsActivity extends AppCompatActivity {
     TextView online_delivery_tv;
     @BindView(R.id.menu_url_icon)
     ImageView menu_url_iv;
+    @BindView(R.id.web_link_icon)
+    ImageView web_icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +60,15 @@ public class RestaurantsActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(name);
 
-        //set image to photo url
-        //implement maps and add location items (lat and long)
         //get location items and set address line 1,2,3
-        //add web_url to web icon
         //get rating list and add in recyclerview to scroll through them
+
+        //set image to photo url
+
+        //make fave button add info to database
+
+        //implement maps and add location items (lat and long)
+
         //implement appbar for image, menu and three icons?
 
         if (delivery == 0) {
@@ -70,6 +76,15 @@ public class RestaurantsActivity extends AppCompatActivity {
         } else if (delivery == 1) {
             online_delivery_tv.setText(" " + R.string.available);
         }
+
+        web_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(web_url));
+                startActivity(intent);
+            }
+        });
 
         menu_url_iv.setOnClickListener(new View.OnClickListener() {
             @Override
