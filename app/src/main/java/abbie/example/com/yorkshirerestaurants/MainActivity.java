@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                     startActivity(new Intent(MainActivity.this, CuisineActivity.class));
                 }
-                finish();
+
             } else {
                 // Sign in failed
                 if (response == null) {
