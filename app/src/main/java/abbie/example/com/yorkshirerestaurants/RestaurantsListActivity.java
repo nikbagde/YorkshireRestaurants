@@ -4,6 +4,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -85,7 +89,7 @@ public class RestaurantsListActivity extends AppCompatActivity implements Restau
     }
 
     public void fetchRestaurants() {
-        service.getRestaurants("332", "city", "1", "20","53.382882", "-1.470300", "rating", cuisineID, "asc")
+        service.getRestaurants("332", "city", "1", "20", "53.382882", "-1.470300", "rating", cuisineID, "asc")
                 .enqueue(new Callback<Restaurants>() {
                     @Override
                     public void onResponse(Call<Restaurants> call, Response<Restaurants> response) {
@@ -115,6 +119,18 @@ public class RestaurantsListActivity extends AppCompatActivity implements Restau
                 }
                 startActivity(new Intent(this, RestaurantsActivity.class));
                 return true;
+
+            case R.id.logout:
+                AuthUI.getInstance()
+                        .signOut(this)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Intent intent = new Intent(RestaurantsListActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -145,20 +161,20 @@ public class RestaurantsListActivity extends AppCompatActivity implements Restau
         String web_url_TAG = "Web URL : ";
         String rating_TAG = "Rating : ";
 
-       // List<Location> locations;
-       // locations = restaurant.getLocation());
+        // List<Location> locations;
+        // locations = restaurant.getLocation());
 
-      //  List<Rating> ratings;
-      //  ratings = restaurant.getUserRatingList());
+        //  List<Rating> ratings;
+        //  ratings = restaurant.getUserRatingList());
 
         Intent intent = new Intent(RestaurantsListActivity.this, RestaurantsActivity.class);
         intent.putExtra(menu_url_TAG, menu_url);
-      //intent.putParcelableArrayListExtra(location_TAG, (ArrayList<? extends Parcelable>) locations);
+        //intent.putParcelableArrayListExtra(location_TAG, (ArrayList<? extends Parcelable>) locations);
         intent.putExtra(name_TAG, restaurant_name);
         intent.putExtra(delivery_TAG, has_online_delivery);
         intent.putExtra(photo_url_TAG, photo_url);
         intent.putExtra(web_url_TAG, web_url);
-     // intent.putParcelableArrayListExtra(rating_TAG, (ArrayList<? extends Parcelable>) ratings);
+        // intent.putParcelableArrayListExtra(rating_TAG, (ArrayList<? extends Parcelable>) ratings);
 
         startActivity(intent);
     }

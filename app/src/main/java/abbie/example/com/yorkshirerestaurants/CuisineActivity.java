@@ -3,6 +3,7 @@ package abbie.example.com.yorkshirerestaurants;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,8 +14,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -44,6 +50,8 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
     private CuisineAdapter cuisineAdapter;
     private String TAG = "CUISINE_ID";
     private String BASE_URL = "https://developers.zomato.com/";
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +115,17 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
                 }
                 startActivity(new Intent(this, FavoritesActivity.class));
                 return true;
+            case R.id.logout:
+                AuthUI.getInstance()
+                        .signOut(this)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Intent intent = new Intent(CuisineActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -128,3 +147,4 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
         startActivity(intent);
     }
 }
+
