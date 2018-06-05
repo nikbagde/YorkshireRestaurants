@@ -68,19 +68,16 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                     startActivity(new Intent(MainActivity.this, CuisineActivity.class));
                 }
-
             } else {
                 // Sign in failed
                 if (response == null) {
                     // User pressed back button - sign in canceled
                     return;
                 }
-
                 if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
                    //no internet (show toast/dialog)
                     return;
                 }
-
                 //sign in error (toast)
                 Log.e("LOG IN ERROR:", "Sign-in error: ", response.getError());
             }
