@@ -2,6 +2,7 @@ package abbie.example.com.yorkshirerestaurants;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +11,17 @@ import android.transition.Fade;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.shashank.sony.fancydialoglib.Animation;
+import com.shashank.sony.fancydialoglib.FancyAlertDialog;
+import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
+import com.shashank.sony.fancydialoglib.Icon;
 
 import java.util.Arrays;
 
@@ -75,7 +81,23 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
-                   //no internet (show toast/dialog)
+                    new FancyAlertDialog.Builder(this)
+                            .setTitle("Connection Error!")
+                            .setBackgroundColor(Color.parseColor("#b7030f"))
+                            .setMessage("Please check your connection and try again ...")
+                            .setNegativeBtnText("OK")
+                            .setNegativeBtnBackground(Color.parseColor("#FFA9A7A8"))
+                            .setAnimation(Animation.POP)
+                            .isCancellable(true)
+                            .setIcon(R.drawable.ic_cancel_white_24dp, Icon.Visible)
+                            .OnNegativeClicked(new FancyAlertDialogListener() {
+                                @Override
+                                public void OnClick() {
+                                    finish();
+                                    startActivity(getIntent());
+                                }
+                            })
+                            .build();
                     return;
                 }
                 //sign in error (toast)
