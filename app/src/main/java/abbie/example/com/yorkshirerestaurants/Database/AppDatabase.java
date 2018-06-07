@@ -9,7 +9,7 @@ import android.util.Log;
 import abbie.example.com.yorkshirerestaurants.Data.Cuisine;
 import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
 
-/*@Database(entities = {Restaurant.class, Cuisine.class}, version = 1, exportSchema = false)
+@Database(entities = {Restaurant.class, Cuisine.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String LOG_TAG = AppDatabase.class.getSimpleName();
@@ -31,4 +31,4 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract RestaurantDAO restaurantDAO();
     public abstract CuisineDAO cuisineDAO();
-}*/
+}

@@ -12,7 +12,7 @@ import java.util.List;
 
 import abbie.example.com.yorkshirerestaurants.Data.Cuisine;
 
-/*@Dao
+@Dao
 public interface CuisineDAO {
 
         @Query("SELECT * FROM cuisineTable")
@@ -30,4 +30,3 @@ public interface CuisineDAO {
         @Query("SELECT * FROM cuisineTable WHERE cuisine_id = :id")
         LiveData<Cuisine> loadCuisineById(int id);
 }
-*/

@@ -39,6 +39,8 @@ public class RestaurantsActivity extends AppCompatActivity {
     ImageView menu_url_iv;
     @BindView(R.id.web_link_icon)
     ImageView web_icon;
+    @BindView(R.id.restaurant_photo)
+    ImageView restaurant_photo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,14 +64,11 @@ public class RestaurantsActivity extends AppCompatActivity {
 
         //get location items and set address line 1,2,3
         //get rating list and add in recyclerview to scroll through them
-
-        //set image to photo url
-
         //make fave button add info to database
-
         //implement maps and add location items (lat and long)
-
         //implement appbar for image, menu and three icons?
+
+        restaurant_photo.setImageURI(Uri.parse(photo_url));
 
         if (delivery == 0) {
             online_delivery_tv.setText(" " + R.string.not_available);

@@ -1,24 +1,16 @@
 package abbie.example.com.yorkshirerestaurants.Data;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
-
 import com.google.gson.annotations.SerializedName;
 
-import io.reactivex.annotations.NonNull;
-
-//@Entity(tableName = "restaurantTable")
 public class Restaurant {
 
-    //@PrimaryKey(autoGenerate = false)
-    //@SerializedName("id")
-    @NonNull
+    @SerializedName("id")
     public String id;
     @SerializedName("name")
     public String name;
     @SerializedName("url")
     public String url;
-    //@SerializedName("location")
+    @SerializedName("location")
     public Location locationList;
     @SerializedName("price_range")
     public int price_range;
@@ -26,13 +18,12 @@ public class Restaurant {
     public String photos_url;
     @SerializedName("menu_url")
     public String menu_url;
-    //@SerializedName("user_rating")
+    @SerializedName("user_rating")
     public Rating userRatingList;
     @SerializedName("has_online_delivery")
     public int online_delivery;
     @SerializedName("cuisines")
     public String cuisines;
-
 
     public String getId() {
         return id;

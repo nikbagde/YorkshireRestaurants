@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
-            // Successfully signed in
             if (resultCode == RESULT_OK) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     finish();
@@ -75,9 +74,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, CuisineActivity.class));
                 }
             } else {
-                // Sign in failed
                 if (response == null) {
-                    // User pressed back button - sign in canceled
+                    Toast.makeText(this, "Sign in cancelled", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
@@ -100,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                             .build();
                     return;
                 }
-                //sign in error (toast)
+                Toast.makeText(this, "Sign in error, try again!", Toast.LENGTH_SHORT).show();
                 Log.e("LOG IN ERROR:", "Sign-in error: ", response.getError());
             }
         }

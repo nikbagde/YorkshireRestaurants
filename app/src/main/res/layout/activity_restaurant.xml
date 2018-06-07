@@ -8,6 +8,7 @@
     tools:context="abbie.example.com.yorkshirerestaurants.RestaurantsListActivity">
 
     <View
+        android:id="@+id/restaurant_photo"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@drawable/food"
@@ -26,6 +27,7 @@
         android:paddingTop="10dp">
 
         <TextView
+            android:id="@+id/overall_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -162,11 +164,9 @@
     </LinearLayout>
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="40dp"
-        android:text="recyler view here for reviews" />
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/reviews_rv"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
 
 </LinearLayout>
