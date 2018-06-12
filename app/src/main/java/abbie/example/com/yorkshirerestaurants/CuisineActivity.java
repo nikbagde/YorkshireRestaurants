@@ -1,15 +1,19 @@
 package abbie.example.com.yorkshirerestaurants;
 
 import android.app.ActivityOptions;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Fade;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,6 +35,8 @@ import abbie.example.com.yorkshirerestaurants.Adapters.CuisineAdapter;
 import abbie.example.com.yorkshirerestaurants.Adapters.CuisineJsonAdapter;
 import abbie.example.com.yorkshirerestaurants.Data.Cuisine;
 import abbie.example.com.yorkshirerestaurants.Data.Cuisines;
+import abbie.example.com.yorkshirerestaurants.Database.DatabaseModels.DataDBModel;
+import abbie.example.com.yorkshirerestaurants.Database.MainViewModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -76,12 +82,24 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
         cuisineAdapter = new CuisineAdapter(this, this);
         recyclerView.setAdapter(cuisineAdapter);
 
+        setupViewModel();
         fetchCuisines();
 
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+    }
+
+    private void setupViewModel() {
+        MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        viewModel.getData().observe(this, new Observer<List<DataDBModel>>() {
+            @Override
+            public void onChanged(@Nullable List<DataDBModel> restaurantEntries) {
+                Log.d(TAG, " " + restaurantEntries.size());
+
+            }
+        });
     }
 
     public void fetchCuisines() {

@@ -5,10 +5,8 @@ import android.arch.persistence.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "cuisineTable")
 public class Cuisine{
 
-    @PrimaryKey(autoGenerate = false)
     @SerializedName("cuisine_id")
     private int cuisine_id;
     @SerializedName("cuisine_name")

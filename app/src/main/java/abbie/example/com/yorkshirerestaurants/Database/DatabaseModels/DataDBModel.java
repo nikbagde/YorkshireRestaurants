@@ -2,11 +2,13 @@ package abbie.example.com.yorkshirerestaurants.Database.DatabaseModels;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-@Entity(tableName = "restaurantTable")
+@Entity(tableName = "restaurantsTable")
 public class DataDBModel {
 
     @PrimaryKey(autoGenerate = false)
+    @NonNull
     public String id;
     public String address;
     public String locality;

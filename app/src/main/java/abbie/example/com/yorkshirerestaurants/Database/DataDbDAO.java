@@ -10,23 +10,22 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import abbie.example.com.yorkshirerestaurants.Data.Restaurant;
+import abbie.example.com.yorkshirerestaurants.Database.DatabaseModels.DataDBModel;
 
 @Dao
-public interface RestaurantDAO {
-
-    @Query("SELECT * FROM restaurantTable")
-    LiveData<List<Restaurant>> loadAllResaurants();
+public interface DataDbDAO {
+    @Query("SELECT * FROM restaurantsTable")
+    LiveData<List<DataDBModel>> loadAllData();
 
     @Insert
-    void insertResaurant(Restaurant RestaurantEntry);
+    void insertData(DataDBModel dataDBModel);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    void updateResaurant(Restaurant resaurantEntry);
+    void updateData(DataDBModel dataDBModel);
 
     @Delete
-    void deleteResaurant(Restaurant resaurantEntry);
+    void deleteData(DataDBModel dataDBModel);
 
-    @Query("SELECT * FROM restaurantTable WHERE id = :id")
-    LiveData<Restaurant> loadResaurantById(int id);
+    @Query("SELECT * FROM restaurantsTable WHERE id = :id")
+    LiveData<DataDBModel> loadDataById(int id);
 }
