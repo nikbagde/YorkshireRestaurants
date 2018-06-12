@@ -39,6 +39,8 @@ public class RestaurantsActivity extends AppCompatActivity {
     ImageView menu_url_iv;
     @BindView(R.id.web_link_icon)
     ImageView web_icon;
+    @BindView(R.id.favorites_button)
+    ImageView favorties_button;
     @BindView(R.id.restaurant_photo)
     ImageView restaurant_photo;
 
@@ -64,9 +66,15 @@ public class RestaurantsActivity extends AppCompatActivity {
 
         //get location items and set address line 1,2,3
         //get rating list and add in recyclerview to scroll through them
-        //make fave button add info to database
         //implement maps and add location items (lat and long)
         //implement appbar for image, menu and three icons?
+
+        favorties_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         restaurant_photo.setImageURI(Uri.parse(photo_url));
 
