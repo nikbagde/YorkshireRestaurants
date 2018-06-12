@@ -51,8 +51,8 @@ dependencies {
     implementation "android.arch.persistence.room:runtime:$room_version"
     annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 
-
     //other libs
     implementation 'com.github.Shashank02051997:FancyAlertDialog-Android:0.1'
+    implementation 'com.facebook.stetho:stetho:1.5.0'
 }
 apply plugin: 'com.google.gms.google-services'

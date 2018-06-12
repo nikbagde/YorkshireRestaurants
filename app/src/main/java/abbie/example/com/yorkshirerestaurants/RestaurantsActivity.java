@@ -14,6 +14,10 @@ import java.util.List;
 
 import abbie.example.com.yorkshirerestaurants.Data.Location;
 import abbie.example.com.yorkshirerestaurants.Data.Rating;
+import abbie.example.com.yorkshirerestaurants.Database.AppDatabase;
+import abbie.example.com.yorkshirerestaurants.Database.AppExecutors;
+import abbie.example.com.yorkshirerestaurants.Database.DataDbDAO;
+import abbie.example.com.yorkshirerestaurants.Database.DatabaseModels.DataDBModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -26,6 +30,8 @@ public class RestaurantsActivity extends AppCompatActivity {
     private String web_url;
     private List<Rating> rating;
     private List<Location> location;
+
+    DataDBModel dataDBModel;
 
     @BindView(R.id.address_tv_1)
     TextView address_line_1;
@@ -64,6 +70,12 @@ public class RestaurantsActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(name);
 
+        dataDBModel.setMenu_url(menu_url);
+        dataDBModel.setName(name);
+        dataDBModel.setOnline_delivery(delivery);
+        dataDBModel.setPhotos_url(photo_url);
+        dataDBModel.setUrl(web_url);
+
         //get location items and set address line 1,2,3
         //get rating list and add in recyclerview to scroll through them
         //implement maps and add location items (lat and long)
@@ -72,7 +84,15 @@ public class RestaurantsActivity extends AppCompatActivity {
         favorties_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        AppDatabase.getInstance(RestaurantsActivity.this)
+                                .restaurantsDAO()
+                                .insertData(dataDBModel);
 
+                    }
+                });
             }
         });
 
