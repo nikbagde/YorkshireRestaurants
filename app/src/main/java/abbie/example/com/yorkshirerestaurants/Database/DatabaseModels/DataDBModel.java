@@ -48,6 +48,10 @@ public class DataDBModel {
         this.cuisines = cuisines;
     }
 
+    public DataDBModel(@NonNull String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }

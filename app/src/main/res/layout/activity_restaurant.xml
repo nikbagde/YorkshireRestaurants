@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="abbie.example.com.yorkshirerestaurants.RestaurantsListActivity">
 
-    <View
+    <ImageView
         android:id="@+id/restaurant_photo"
         android:layout_width="match_parent"
         android:layout_height="150dp"

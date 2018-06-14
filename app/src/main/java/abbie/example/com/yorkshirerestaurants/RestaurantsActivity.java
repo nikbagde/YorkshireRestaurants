@@ -23,13 +23,13 @@ import butterknife.ButterKnife;
 
 public class RestaurantsActivity extends AppCompatActivity {
 
+    private String id;
     private String menu_url;
     private String name;
     private int delivery;
     private String photo_url;
     private String web_url;
-    private List<Rating> rating;
-    private List<Location> location;
+    private String address;
 
     DataDBModel dataDBModel;
 
@@ -55,6 +55,8 @@ public class RestaurantsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
         ButterKnife.bind(this);
+
+        dataDBModel = new DataDBModel(id);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
