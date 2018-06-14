@@ -82,13 +82,18 @@ public class CuisineActivity extends AppCompatActivity implements CuisineAdapter
         cuisineAdapter = new CuisineAdapter(this, this);
         recyclerView.setAdapter(cuisineAdapter);
 
-        setupViewModel();
         fetchCuisines();
 
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        setupViewModel();
     }
 
     private void setupViewModel() {

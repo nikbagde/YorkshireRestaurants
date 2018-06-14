@@ -60,6 +60,7 @@ public class RestaurantsActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            id = extras.getString("ID : ");
             menu_url = extras.getString("Menu URL : ");
             name = extras.getString("Restaurants Name : ");
             delivery = extras.getInt("Has online delivery : ");
@@ -72,6 +73,7 @@ public class RestaurantsActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(name);
 
+        dataDBModel.setId(id);
         dataDBModel.setMenu_url(menu_url);
         dataDBModel.setName(name);
         dataDBModel.setOnline_delivery(delivery);

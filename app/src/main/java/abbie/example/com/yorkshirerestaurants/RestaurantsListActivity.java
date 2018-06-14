@@ -145,6 +145,7 @@ public class RestaurantsListActivity extends AppCompatActivity implements Restau
 
     @Override
     public void onRestaurantItemClick(Restaurant restaurant) {
+        String id = restaurant.getId();
         Location location = restaurant.getLocation();
         String menu_url = restaurant.getMenu_url();
         String restaurant_name = restaurant.getName();
@@ -153,6 +154,7 @@ public class RestaurantsListActivity extends AppCompatActivity implements Restau
         String web_url = restaurant.getUrl();
         Rating rating = restaurant.getUserRatingList();
 
+        String id_TAG = "ID : ";
         String location_TAG = "Location : ";
         String menu_url_TAG = "Menu URL : ";
         String name_TAG = "Restaurants Name : ";
@@ -168,6 +170,7 @@ public class RestaurantsListActivity extends AppCompatActivity implements Restau
         //  ratings = restaurant.getUserRatingList());
 
         Intent intent = new Intent(RestaurantsListActivity.this, RestaurantsActivity.class);
+        intent.putExtra(id_TAG, id);
         intent.putExtra(menu_url_TAG, menu_url);
         //intent.putParcelableArrayListExtra(location_TAG, (ArrayList<? extends Parcelable>) locations);
         intent.putExtra(name_TAG, restaurant_name);

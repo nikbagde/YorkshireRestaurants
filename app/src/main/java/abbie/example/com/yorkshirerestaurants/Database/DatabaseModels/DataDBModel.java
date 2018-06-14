@@ -1,6 +1,7 @@
 package abbie.example.com.yorkshirerestaurants.Database.DatabaseModels;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -26,6 +27,7 @@ public class DataDBModel {
     public int online_delivery;
     public String cuisines;
 
+    @Ignore
     public DataDBModel(String id, String address, String locality, String city, String lat,
                        String longt, String zipcode, String aggregate_rating, String rating_text,
                        String name, String url, int price_range, String photos_url, String menu_url,
